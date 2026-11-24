@@ -152,13 +152,13 @@ export function GlassModal({ isOpen, onClose, title, closeLabel = 'Close', child
       ref={dialogRef}
       closedby="any"
       aria-labelledby={titleId}
-      className="glass-dialog rounded-[2rem] outline-none"
+      className="glass-dialog rounded-2xl outline-none sm:rounded-[2rem]"
     >
-      <div className="liquid-glass-strong relative flex max-h-[calc(100dvh-2.5rem)] flex-col overflow-hidden rounded-[2rem]">
-        <div className="flex items-center justify-between gap-4 border-b border-slate-900/10 px-6 py-4 dark:border-white/15">
+      <div className="liquid-glass-strong relative flex max-h-[calc(100dvh-1.5rem)] flex-col overflow-hidden rounded-2xl sm:max-h-[calc(100dvh-2.5rem)] sm:rounded-[2rem]">
+        <div className="flex items-center justify-between gap-3 border-b border-slate-900/10 px-4 py-3.5 sm:gap-4 sm:px-6 sm:py-4 dark:border-white/15">
           <h1
             id={titleId}
-            className="text-lg font-bold tracking-tight text-slate-900 sm:text-xl dark:text-white"
+            className="text-base font-bold leading-snug tracking-tight text-slate-900 sm:text-xl dark:text-white"
           >
             {title}
           </h1>
@@ -166,13 +166,13 @@ export function GlassModal({ isOpen, onClose, title, closeLabel = 'Close', child
             type="button"
             onClick={animateAndClose}
             aria-label={closeLabel}
-            className="liquid-pill inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-slate-700 transition hover:scale-105 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 dark:text-slate-200 dark:hover:text-white"
+            className="liquid-pill inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-slate-700 transition hover:scale-105 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 sm:h-10 sm:w-10 dark:text-slate-200 dark:hover:text-white"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="overflow-y-auto p-6 sm:p-7">{children}</div>
+        <div className="overflow-y-auto p-4 sm:p-6 lg:p-7">{children}</div>
       </div>
     </dialog>
   );

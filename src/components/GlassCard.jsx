@@ -12,7 +12,7 @@ export function GlassCard({
 
   const handlePointerMove = useCallback(
     (e) => {
-      if (interactive && cardRef.current) {
+      if (interactive && e.pointerType === 'mouse' && cardRef.current) {
         const rect = cardRef.current.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -27,8 +27,8 @@ export function GlassCard({
   return (
     <Component
       ref={cardRef}
-      onPointerMove={handlePointerMove}
-      className={`liquid-glass rounded-3xl ${interactive ? 'liquid-interactive' : ''} ${className}`}
+      onPointerMove={interactive ? handlePointerMove : onPointerMove}
+      className={`liquid-glass min-w-0 rounded-2xl sm:rounded-3xl ${interactive ? 'liquid-interactive' : ''} ${className}`}
       {...props}
     >
       {children}

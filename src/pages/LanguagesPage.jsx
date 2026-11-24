@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Code2, Gauge, GraduationCap, Terminal } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { programmingLanguages } from '../data/languagesData';
@@ -9,23 +8,20 @@ import { PageTransition } from '../components/PageTransition';
 function MetricBar({ label, value, max = 10, gradientClass, hint, icon: Icon }) {
   const pct = Math.round((value / max) * 100);
   return (
-    <div className="rounded-2xl border border-slate-900/10 bg-white/45 p-3.5 dark:border-white/10 dark:bg-white/[0.04]">
+    <div className="rounded-2xl border border-slate-900/10 bg-white/45 p-3 sm:p-3.5 dark:border-white/10 dark:bg-white/[0.04]">
       <div className="flex items-center justify-between gap-2 text-xs font-semibold">
         <span className="inline-flex items-center gap-1.5 text-slate-700 dark:text-slate-200">
-          <Icon className="h-3.5 w-3.5 opacity-75" />
+          <Icon className="h-3.5 w-3.5 shrink-0 opacity-75" />
           <span>{label}</span>
         </span>
-        <span className="font-mono text-slate-900 dark:text-white">
+        <span className="shrink-0 font-mono text-slate-900 dark:text-white">
           {value}/{max}
         </span>
       </div>
       <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-900/10 dark:bg-white/10">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${pct}%` }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className={`h-full rounded-full bg-gradient-to-r ${gradientClass}`}
+        <div
+          style={{ width: `${pct}%` }}
+          className={`h-full rounded-full bg-gradient-to-r transition-all duration-500 ${gradientClass}`}
         />
       </div>
       <div className="mt-1.5 text-[11px] text-slate-500 dark:text-slate-400">{hint}</div>
@@ -51,20 +47,20 @@ export function LanguagesPage() {
         </p>
       </div>
 
-      <div className="mt-9 grid gap-7 lg:grid-cols-2">
+      <div className="mt-7 grid gap-5 sm:mt-9 sm:gap-7 lg:grid-cols-2">
         {programmingLanguages.map((langItem) => (
-          <GlassCard key={langItem.id} as="article" interactive className="flex flex-col justify-between p-6 sm:p-7">
+          <GlassCard key={langItem.id} as="article" interactive className="flex min-w-0 flex-col justify-between overflow-hidden p-4 sm:p-6 lg:p-7">
             <div>
               {/* Card Header */}
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="flex items-center gap-3.5">
+              <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
+                <div className="flex min-w-0 items-center gap-3">
                   <div
-                    className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${langItem.color} font-mono text-sm font-extrabold text-white shadow-lg`}
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${langItem.color} font-mono text-sm font-extrabold text-white shadow-lg sm:h-12 sm:w-12`}
                   >
                     {langItem.badge}
                   </div>
-                  <div>
-                    <h2 className="text-2xl font-bold tracking-tight text-slate-950 dark:text-white">
+                  <div className="min-w-0">
+                    <h2 className="text-xl font-bold tracking-tight text-slate-950 sm:text-2xl dark:text-white">
                       {langItem.name}
                     </h2>
                     <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
@@ -73,7 +69,7 @@ export function LanguagesPage() {
                   </div>
                 </div>
 
-                <div className="liquid-pill rounded-xl px-3 py-1.5 text-right text-[11px] font-medium text-slate-600 dark:text-slate-300">
+                <div className="liquid-pill rounded-xl px-3 py-1.5 text-left text-[11px] font-medium text-slate-600 sm:text-right dark:text-slate-300">
                   <div>
                     {t.languages.creatorPrefix} <strong className="text-slate-900 dark:text-white">{langItem.creator}</strong>
                   </div>

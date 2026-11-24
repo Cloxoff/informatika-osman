@@ -55,7 +55,7 @@ export function HardwarePage() {
       <div
         role="tablist"
         aria-label={t.hardware.title}
-        className="mt-8 flex flex-wrap items-center gap-2.5"
+        className="mt-6 flex flex-wrap items-center gap-2 sm:mt-8 sm:gap-2.5"
       >
         {hardwareCategories.map((cat) => {
           const isSelected = activeCategory === cat.id;
@@ -66,7 +66,7 @@ export function HardwarePage() {
               role="tab"
               aria-selected={isSelected}
               onClick={() => setActiveCategory(cat.id)}
-              className={`relative inline-flex items-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 ${
+              className={`relative inline-flex items-center gap-1.5 rounded-2xl px-3 py-2 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm ${
                 isSelected
                   ? 'text-slate-950 dark:text-white'
                   : 'liquid-pill text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white'
@@ -122,7 +122,7 @@ export function HardwarePage() {
             </div>
 
             {/* Body */}
-            <div className="flex flex-1 flex-col justify-between p-6">
+            <div className="flex flex-1 flex-col justify-between p-4 sm:p-6">
               <div>
                 <h2 className="text-xl font-bold tracking-tight text-slate-950 dark:text-white">
                   {tr(item.name)}

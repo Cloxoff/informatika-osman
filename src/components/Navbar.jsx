@@ -23,20 +23,20 @@ export function Navbar() {
     <header className="sticky top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
       <nav
         aria-label="Primary navigation"
-        className="liquid-glass mx-auto flex max-w-7xl items-center justify-between gap-2 rounded-2xl px-3 py-2.5 sm:px-3.5"
+        className="liquid-glass liquid-nav mx-auto flex max-w-7xl items-center justify-between gap-2 rounded-2xl px-2.5 py-2 sm:px-3.5 sm:py-2.5"
       >
         {/* Left: Pulsing GITHUB Pages Online Badge */}
         <Link
           to="/"
           onClick={() => setMobileOpen(false)}
           title={t.nav.onlineLabel}
-          className="liquid-pill group inline-flex shrink-0 items-center gap-2.5 rounded-xl px-3 py-1.5 transition hover:border-emerald-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+          className="liquid-pill group inline-flex shrink-0 items-center gap-2 rounded-xl px-2.5 py-1.5 transition hover:border-emerald-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 sm:gap-2.5 sm:px-3"
         >
           <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#10B981] opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 animate-pulse rounded-full bg-[#10B981] shadow-[0_0_10px_#10B981]" />
+            <span className="absolute hidden h-full w-full animate-ping rounded-full bg-[#10B981] opacity-75 sm:inline-flex" />
+            <span className="relative inline-flex h-2.5 w-2.5 animate-pulse rounded-full bg-[#10B981] shadow-[0_0_8px_#10B981]" />
           </span>
-          <span className="text-xs font-extrabold tracking-wide text-slate-900 dark:text-white">
+          <span className="text-[11px] font-extrabold tracking-wide text-slate-900 sm:text-xs dark:text-white">
             {t.nav.githubPages}
           </span>
         </Link>
@@ -146,7 +146,7 @@ export function Navbar() {
             transition={{ duration: 0.22 }}
             className="liquid-glass-strong mx-auto mt-2 max-w-7xl rounded-2xl p-2 xl:hidden"
           >
-            <ul className="grid gap-1 sm:grid-cols-2">
+            <ul className="grid gap-1 sm:grid-cols-2 md:grid-cols-3">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.path;
@@ -155,7 +155,7 @@ export function Navbar() {
                     <NavLink
                       to={item.path}
                       onClick={() => setMobileOpen(false)}
-                      className={`flex items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm font-medium transition ${
+                      className={`flex items-center gap-2.5 rounded-xl px-3.5 py-3 text-sm font-medium transition ${
                         isActive
                           ? 'bg-sky-500/15 text-sky-700 ring-1 ring-sky-400/30 dark:bg-sky-400/20 dark:text-sky-200'
                           : 'text-slate-700 hover:bg-white/40 dark:text-slate-200 dark:hover:bg-white/10'

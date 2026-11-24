@@ -52,7 +52,7 @@ export function NewsPage() {
               </span>
             </div>
 
-            <div className="flex flex-1 flex-col justify-between p-6">
+            <div className="flex flex-1 flex-col justify-between p-4 sm:p-6">
               <div>
                 <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-500 dark:text-slate-400">
                   <span className="inline-flex items-center gap-1">

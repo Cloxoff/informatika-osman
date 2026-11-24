@@ -13,8 +13,8 @@ export function Footer() {
   ];
 
   return (
-    <footer className="mt-16 px-3 pb-6 sm:px-6">
-      <div className="liquid-glass mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 rounded-3xl px-6 py-6 md:flex-row">
+    <footer className="mt-10 px-3 pb-5 sm:mt-16 sm:px-6 sm:pb-6">
+      <div className="liquid-glass mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 rounded-2xl px-4 py-5 sm:gap-5 sm:rounded-3xl sm:px-6 sm:py-6 md:flex-row">
         <div className="text-center md:text-left">
           <div className="flex items-center justify-center gap-2 md:justify-start">
             <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />

@@ -202,26 +202,26 @@ export function QuizPage() {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.25 }}
             >
-              <GlassCard className="p-8 sm:p-12">
+              <GlassCard className="p-5 sm:p-10 lg:p-12">
                 <div className="mx-auto max-w-3xl text-center">
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-xl shadow-amber-500/30">
-                    <Trophy className="h-10 w-10" />
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-xl shadow-amber-500/30 sm:h-20 sm:w-20">
+                    <Trophy className="h-8 w-8 sm:h-10 sm:w-10" />
                   </div>
-                  <h2 className="mt-6 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+                  <h2 className="mt-5 text-2xl font-extrabold tracking-tight text-slate-950 sm:mt-6 sm:text-4xl dark:text-white">
                     {t.quiz.startTitle}
                   </h2>
-                  <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
                     {t.quiz.startDesc}
                   </p>
 
-                  <div className="mt-8 grid gap-3 text-left sm:grid-cols-2">
+                  <div className="mt-6 grid gap-2.5 text-left sm:mt-8 sm:grid-cols-2 sm:gap-3">
                     {t.quiz.rules.map((rule, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center gap-3 rounded-2xl border border-slate-900/10 bg-white/55 px-4 py-3.5 dark:border-white/15 dark:bg-white/[0.04]"
+                        className="flex items-center gap-3 rounded-2xl border border-slate-900/10 bg-white/55 px-3.5 py-3 sm:px-4 sm:py-3.5 dark:border-white/15 dark:bg-white/[0.04]"
                       >
                         <Sparkles className="h-4 w-4 shrink-0 text-sky-500" />
-                        <span className="text-sm font-medium text-slate-800 dark:text-slate-200">
+                        <span className="text-xs font-medium text-slate-800 sm:text-sm dark:text-slate-200">
                           {rule}
                         </span>
                       </div>
@@ -231,7 +231,7 @@ export function QuizPage() {
                   <button
                     type="button"
                     onClick={startQuiz}
-                    className="mt-9 inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-sky-500 via-indigo-500 to-emerald-500 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-sky-500/30 transition hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+                    className="mt-7 inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-sky-500 via-indigo-500 to-emerald-500 px-8 py-4 text-base font-bold text-white shadow-xl shadow-sky-500/30 transition hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 sm:mt-9 sm:w-auto sm:text-lg"
                   >
                     <span>{t.quiz.startBtn}</span>
                     <ArrowRight className="h-5 w-5" />
@@ -249,52 +249,52 @@ export function QuizPage() {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.22 }}
             >
-              <GlassCard className="p-6 sm:p-10">
+              <GlassCard className="p-4 sm:p-8 lg:p-10">
                 {/* Classroom HUD */}
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <span className="rounded-2xl bg-slate-900 px-4 py-2 font-mono text-sm font-bold text-white dark:bg-white dark:text-slate-950">
+                <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-4">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                    <span className="rounded-xl bg-slate-900 px-3 py-1.5 font-mono text-xs font-bold text-white sm:rounded-2xl sm:px-4 sm:py-2 sm:text-sm dark:bg-white dark:text-slate-950">
                       {t.quiz.questionCounter} {currentIdx + 1} {t.quiz.of} {totalQuestions}
                     </span>
-                    <span className="liquid-pill rounded-2xl px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">
+                    <span className="liquid-pill rounded-xl px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-sky-700 sm:rounded-2xl sm:px-3.5 sm:py-2 sm:text-xs dark:text-sky-300">
                       {tr(currentQuestion.topic)}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <div className="liquid-pill flex items-center gap-2 rounded-2xl px-4 py-2">
-                      <Trophy className="h-4 w-4 text-amber-500" />
-                      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                    <div className="liquid-pill flex items-center gap-1.5 rounded-xl px-3 py-1.5 sm:gap-2 sm:rounded-2xl sm:px-4 sm:py-2">
+                      <Trophy className="h-3.5 w-3.5 text-amber-500 sm:h-4 sm:w-4" />
+                      <span className="text-[11px] font-semibold text-slate-500 sm:text-xs dark:text-slate-400">
                         {t.quiz.scoreLabel}:
                       </span>
-                      <span className="font-mono text-base font-extrabold text-slate-950 dark:text-white">
+                      <span className="font-mono text-sm font-extrabold text-slate-950 sm:text-base dark:text-white">
                         {score}
                       </span>
                     </div>
 
-                    <div className="liquid-pill flex items-center gap-2 rounded-2xl px-4 py-2">
+                    <div className="liquid-pill flex items-center gap-1.5 rounded-xl px-3 py-1.5 sm:gap-2 sm:rounded-2xl sm:px-4 sm:py-2">
                       <Flame
-                        className={`h-4 w-4 ${
+                        className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${
                           streak > 0 ? 'text-orange-500' : 'text-slate-400'
                         }`}
                       />
-                      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                      <span className="text-[11px] font-semibold text-slate-500 sm:text-xs dark:text-slate-400">
                         {t.quiz.streakLabel}:
                       </span>
-                      <span className="font-mono text-base font-extrabold text-orange-600 dark:text-orange-300">
+                      <span className="font-mono text-sm font-extrabold text-orange-600 sm:text-base dark:text-orange-300">
                         {streak}x
                       </span>
                     </div>
 
                     <div
-                      className={`liquid-pill flex items-center gap-2 rounded-2xl px-4 py-2 ${
+                      className={`liquid-pill flex items-center gap-1.5 rounded-xl px-3 py-1.5 sm:gap-2 sm:rounded-2xl sm:px-4 sm:py-2 ${
                         timeLeft <= 5 && !isAnswered
                           ? 'border-rose-500/60 bg-rose-500/15 text-rose-600 dark:text-rose-300'
                           : ''
                       }`}
                     >
-                      <Timer className="h-4 w-4" />
-                      <span className="font-mono text-base font-extrabold">
+                      <Timer className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      <span className="font-mono text-sm font-extrabold sm:text-base">
                         {timeLeft}
                         {t.quiz.secUnit}
                       </span>
@@ -303,7 +303,7 @@ export function QuizPage() {
                 </div>
 
                 {/* Timer Progress Bar */}
-                <div className="mt-5 h-3 w-full overflow-hidden rounded-full bg-slate-900/10 dark:bg-white/10">
+                <div className="mt-4 h-2.5 w-full overflow-hidden rounded-full bg-slate-900/10 sm:mt-5 sm:h-3 dark:bg-white/10">
                   <div
                     className={`h-full rounded-full transition-all duration-1000 ease-linear ${
                       timeLeft > 10
@@ -318,15 +318,15 @@ export function QuizPage() {
 
                 {/* Large Projector Question Text */}
                 <h2
-                  className={`mt-7 font-extrabold leading-snug tracking-tight text-slate-950 dark:text-white ${
-                    projectorXL ? 'text-2xl sm:text-3xl lg:text-4xl' : 'text-xl sm:text-2xl lg:text-3xl'
+                  className={`mt-5 font-extrabold leading-snug tracking-tight text-slate-950 sm:mt-7 dark:text-white ${
+                    projectorXL ? 'text-xl sm:text-3xl lg:text-4xl' : 'text-lg sm:text-2xl lg:text-3xl'
                   }`}
                 >
                   {tr(currentQuestion.question)}
                 </h2>
 
                 {/* Wide High-Contrast A / B / C / D Buttons */}
-                <div className="mt-8 grid gap-4 md:grid-cols-2">
+                <div className="mt-6 grid gap-3 sm:mt-8 sm:gap-4 md:grid-cols-2">
                   {currentQuestion.options.map((opt, idx) => {
                     const isCorrect = idx === currentQuestion.correctIndex;
                     const isPicked = selectedOption === idx;
@@ -357,18 +357,18 @@ export function QuizPage() {
                         type="button"
                         disabled={isAnswered}
                         onClick={() => handleSelectOption(idx)}
-                        className={`flex w-full items-center gap-4 rounded-2xl border-2 p-5 text-left transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 ${
+                        className={`flex w-full items-center gap-3 rounded-2xl border-2 p-3.5 text-left transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 sm:gap-4 sm:p-5 ${
                           !isAnswered ? 'cursor-pointer hover:-translate-y-0.5' : 'cursor-default'
                         } ${cardStyle}`}
                       >
                         <span
-                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl font-mono text-lg font-extrabold ${badgeStyle}`}
+                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-mono text-base font-extrabold sm:h-12 sm:w-12 sm:text-lg ${badgeStyle}`}
                         >
                           {opt.id}
                         </span>
                         <span
                           className={`flex-1 font-semibold leading-snug ${
-                            projectorXL ? 'text-lg sm:text-xl' : 'text-base sm:text-lg'
+                            projectorXL ? 'text-sm sm:text-lg lg:text-xl' : 'text-sm sm:text-base lg:text-lg'
                           }`}
                         >
                           {tr(opt.text)}
@@ -460,7 +460,7 @@ export function QuizPage() {
                   {gradeText}
                 </p>
 
-                <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:grid-cols-4">
+                <div className="mx-auto mt-6 grid max-w-3xl grid-cols-2 gap-3 sm:mt-8 sm:grid-cols-4 sm:gap-4">
                   <div className="rounded-2xl border border-slate-900/10 bg-white/60 p-4 dark:border-white/15 dark:bg-white/[0.05]">
                     <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">
                       {t.quiz.results.scoreOutOf}
