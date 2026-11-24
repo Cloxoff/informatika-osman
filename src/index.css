@@ -1,0 +1,427 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+
+  --surface-canvas-light: #e9eef7;
+  --surface-canvas-dark: #05070e;
+  --text-primary-light: #0f172a;
+  --text-primary-dark: #f8fafc;
+  --text-muted-light: #475569;
+  --text-muted-dark: #94a3b8;
+  --accent-light: #0284c7;
+  --accent-dark: #38bdf8;
+  --scrollbar-track-light: #dde5f0;
+  --scrollbar-track-dark: #0b101d;
+  --scrollbar-thumb-light: #94a3b8;
+  --scrollbar-thumb-dark: #334155;
+
+  --surface-canvas: var(--surface-canvas-light);
+  --text-primary: var(--text-primary-light);
+  --text-muted: var(--text-muted-light);
+  --accent-color: var(--accent-light);
+  --scrollbar-track: var(--scrollbar-track-light);
+  --scrollbar-thumb: var(--scrollbar-thumb-light);
+
+  @media (prefers-color-scheme: dark) {
+    --surface-canvas: var(--surface-canvas-dark);
+    --text-primary: var(--text-primary-dark);
+    --text-muted: var(--text-muted-dark);
+    --accent-color: var(--accent-dark);
+    --scrollbar-track: var(--scrollbar-track-dark);
+    --scrollbar-thumb: var(--scrollbar-thumb-dark);
+  }
+
+  @supports (color: light-dark(white, black)) {
+    --surface-canvas: light-dark(var(--surface-canvas-light), var(--surface-canvas-dark));
+    --text-primary: light-dark(var(--text-primary-light), var(--text-primary-dark));
+    --text-muted: light-dark(var(--text-muted-light), var(--text-muted-dark));
+    --accent-color: light-dark(var(--accent-light), var(--accent-dark));
+    --scrollbar-track: light-dark(var(--scrollbar-track-light), var(--scrollbar-track-dark));
+    --scrollbar-thumb: light-dark(var(--scrollbar-thumb-light), var(--scrollbar-thumb-dark));
+  }
+
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+
+  accent-color: var(--accent-color);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html.dark {
+  color-scheme: dark;
+  --surface-canvas: var(--surface-canvas-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-muted: var(--text-muted-dark);
+  --accent-color: var(--accent-dark);
+  --scrollbar-track: var(--scrollbar-track-dark);
+  --scrollbar-thumb: var(--scrollbar-thumb-dark);
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 9999px;
+  }
+}
+
+html,
+body {
+  min-height: 100%;
+  background-color: var(--surface-canvas);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: clip;
+}
+
+/* =========================================================
+   Apple iOS Liquid Glass Multi-Layer Surfaces
+   ========================================================= */
+.liquid-glass {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    inset 0 -1px 1px rgba(148, 163, 184, 0.14),
+    0 20px 45px -18px rgba(15, 23, 42, 0.14);
+}
+
+.dark .liquid-glass {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.085) 0%,
+    rgba(13, 18, 32, 0.62) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.35),
+    0 24px 50px -20px rgba(0, 0, 0, 0.72);
+}
+
+.liquid-glass-strong {
+  position: relative;
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.84) 0%,
+    rgba(241, 246, 255, 0.68) 100%
+  );
+  backdrop-filter: blur(28px) saturate(195%);
+  -webkit-backdrop-filter: blur(28px) saturate(195%);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
+    0 28px 60px -20px rgba(15, 23, 42, 0.22);
+}
+
+.dark .liquid-glass-strong {
+  background: linear-gradient(
+    150deg,
+    rgba(24, 32, 54, 0.84) 0%,
+    rgba(9, 13, 24, 0.88) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.28),
+    0 32px 70px -18px rgba(0, 0, 0, 0.85);
+}
+
+.liquid-pill {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+.dark .liquid-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22);
+}
+
+/* Interactive Card Micro-animations & Specular Sheen */
+.liquid-interactive {
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    box-shadow 0.34s ease;
+  will-change: transform;
+}
+
+.liquid-interactive::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 20%),
+    rgba(255, 255, 255, 0.45),
+    transparent 65%
+  );
+  z-index: 1;
+}
+
+.dark .liquid-interactive::before {
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 20%),
+    rgba(125, 211, 252, 0.18),
+    transparent 65%
+  );
+}
+
+.liquid-interactive:hover::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .liquid-interactive:hover {
+    transform: translateY(-6px) scale(1.01);
+  }
+}
+
+.liquid-interactive:hover {
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.9),
+    0 24px 55px -16px rgba(14, 165, 233, 0.22);
+}
+
+.dark .liquid-interactive:hover {
+  border-color: rgba(125, 211, 252, 0.42);
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.34),
+    0 28px 65px -18px rgba(56, 189, 248, 0.25),
+    0 0 28px -8px rgba(129, 140, 248, 0.24);
+}
+
+/* =========================================================
+   Animated Ambient Mesh Orbs (Compositor-Only)
+   ========================================================= */
+@keyframes orbFloatOne {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(7vw, 4vh, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-4vw, 8vh, 0) scale(0.95);
+  }
+}
+
+@keyframes orbFloatTwo {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-8vw, -6vh, 0) scale(1.1);
+  }
+}
+
+@keyframes orbFloatThree {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40% {
+    transform: translate3d(5vw, -7vh, 0) scale(1.06);
+  }
+  80% {
+    transform: translate3d(-6vw, 4vh, 0) scale(0.96);
+  }
+}
+
+.mesh-orb-1,
+.mesh-orb-2,
+.mesh-orb-3 {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mesh-orb-1 {
+    animation: orbFloatOne 22s ease-in-out infinite;
+  }
+  .mesh-orb-2 {
+    animation: orbFloatTwo 27s ease-in-out infinite;
+  }
+  .mesh-orb-3 {
+    animation: orbFloatThree 31s ease-in-out infinite;
+  }
+}
+
+/* =========================================================
+   Native Top-Layer <dialog> Liquid Glass Modal
+   ========================================================= */
+dialog.glass-dialog {
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: min(56rem, calc(100vw - 1.5rem));
+  max-height: calc(100dvh - 2rem);
+  width: 100%;
+  color: inherit;
+  opacity: 0;
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: 0.28s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-behavior: allow-discrete;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog.glass-dialog {
+    transform: scale(0.95) translateY(12px);
+  }
+}
+
+dialog.glass-dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog.glass-dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgb(2 6 23 / 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition-property: background-color, backdrop-filter, display, overlay;
+  transition-duration: 0.28s;
+  transition-timing-function: ease-out;
+  transition-behavior: allow-discrete;
+}
+
+:is(dialog.glass-dialog[open]):where(:not([data-closing])) {
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transform: scale(1) translateY(0);
+
+    @starting-style {
+      transform: scale(0.95) translateY(12px);
+    }
+  }
+
+  &::backdrop {
+    background-color: rgb(2 6 23 / 0.62);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    @starting-style {
+      background-color: rgb(2 6 23 / 0);
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog.glass-dialog,
+  dialog.glass-dialog::backdrop {
+    transition-duration: 0.1s;
+  }
+}
+
+/* =========================================================
+   Code Surface (Forced Dark Mode)
+   ========================================================= */
+.code-surface {
+  color-scheme: dark;
+  background: linear-gradient(160deg, rgba(9, 13, 24, 0.94) 0%, rgba(15, 23, 42, 0.9) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   Author Signature: Osman (Liquid Gradient + Neon Hover)
+   ========================================================= */
+@keyframes osmanFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.osman-signature {
+  display: inline-block;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background-image: linear-gradient(
+    110deg,
+    #0284c7 0%,
+    #6366f1 22%,
+    #d946ef 48%,
+    #10b981 74%,
+    #0284c7 100%
+  );
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.3s ease;
+}
+
+.dark .osman-signature {
+  background-image: linear-gradient(
+    110deg,
+    #38bdf8 0%,
+    #818cf8 22%,
+    #e879f9 48%,
+    #34d399 74%,
+    #38bdf8 100%
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .osman-signature {
+    animation: osmanFlow 6s ease-in-out infinite;
+  }
+}
+
+.osman-signature:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.65))
+    drop-shadow(0 0 26px rgba(217, 70, 239, 0.45));
+}
